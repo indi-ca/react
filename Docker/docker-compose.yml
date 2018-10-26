@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+
+  nodeosd:
+    image: frontend
+    container_name: frontend
+    command: /usr/sbin/nginx
+    ports:
+      - "8083:80"
