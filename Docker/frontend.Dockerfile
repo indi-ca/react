@@ -21,4 +21,6 @@ RUN apt-get install -y nginx
 
 COPY Docker/nginx.conf /etc/nginx/nginx.conf
 COPY Docker/default /etc/nginx/sites-available/default
+COPY src /dockerize-me/src
 
+RUN npm run build
