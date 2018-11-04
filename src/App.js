@@ -87,11 +87,11 @@ class Container extends React.Component {
     axios.get('http://localhost:48538/reinforce61')
     .then((response) => {
       console.log(response.data);
-      this.setState({version: response.data.version});
       this.setState({spanish: response.data.spanish});
       this.setState({chinese: response.data.chinese});
       this.setState({thai: response.data.thai});
       this.setState({fragment: response.data.fragment});
+      this.setState({version: response.data.version});
     })
     .catch((e) => 
     {
@@ -134,6 +134,7 @@ class Container extends React.Component {
         {this.renderChineseFragment()}
         {this.renderThaiFragment()}
         {this.renderFragment()}
+	<div>Version {this.state.version}</div>
       </div>
     );
   }
