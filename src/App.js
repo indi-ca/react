@@ -22,7 +22,6 @@ class Fragment extends React.Component {
 
 class SpanishFragment extends React.Component {
   render() {
-    console.log(this.props);
     return (
       <div className="SpanishFragment">
         <div>{this.props.value.definition}</div>
@@ -30,6 +29,17 @@ class SpanishFragment extends React.Component {
         <div>Examples</div>
         <div>{this.props.value.en}</div>
         <div>{this.props.value.es}</div>
+      </div>
+    );
+  }
+}
+
+class ChineseFragment extends React.Component {
+  render() {
+    return (
+      <div className="ChineseFragment">
+        <div>{this.props.value.zhWord}</div>
+        <div>{this.props.value.zhInterpretation}</div>
       </div>
     );
   }
@@ -46,11 +56,27 @@ class Container extends React.Component {
         'en': null,
         'es': null
       },
+      chinese: {
+        'zhWord': null,
+        'zhInterpretation': null,
+      },
       version: null,
       fragments: Array(3).fill(1),
     };
     this.handleRefreshClick = this.handleRefreshClick.bind(this);
     this.handleClick = this.handleClick.bind(this);
+
+    axios.get('http://165.227.49.162:48538/reinforce61')
+    .then((response) => {
+      console.log(response.data);
+      this.setState({version: response.data.version});
+      this.setState({spanish: response.data.spanish});
+      this.setState({chinese: response.data.chinese});
+    })
+    .catch((e) => 
+    {
+      console.error(e);
+    });
   }
 
   handleClick(i) {
@@ -60,7 +86,7 @@ class Container extends React.Component {
   }
 
   handleRefreshClick () {
-    axios.get('http://localhost:48538/reinforce61')
+    axios.get('http://165.227.49.162:48538/reinforce61')
     .then((response) => {
       console.log(response.data);
       this.setState({version: response.data.version});
@@ -71,6 +97,8 @@ class Container extends React.Component {
       console.error(e);
     });
   }
+
+
 
   renderFragment(i) {
     return (
@@ -87,6 +115,13 @@ class Container extends React.Component {
       />);
   }
 
+  renderChineseFragment() {
+    return (
+      <ChineseFragment
+        value={this.state.chinese}
+      />);
+  }
+
   render() {
     return (
       <div className="Container">
@@ -97,6 +132,7 @@ class Container extends React.Component {
           Load Fragments
         </button>
         {this.renderSpanishFragment()}
+        {this.renderChineseFragment()}
         {this.renderFragment(0)}
         {this.renderFragment(1)}
         {this.renderFragment(2)}

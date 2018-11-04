@@ -33,14 +33,13 @@
 
 .Container {
   margin: 0 auto;
-  width: 600px;
+  width: 400px;
 }
 
 .Fragment {
   border: 1px;
   border-style: solid;
   border-color: lightgrey;
-  width: 600px;
   margin: 10px;
 }
 
@@ -48,6 +47,12 @@
   border: 1px;
   border-style: solid;
   border-color: lightgrey;
-  width: 600px;
+  margin: 10px;
+}
+
+.ChineseFragment {
+  border: 1px;
+  border-style: solid;
+  border-color: lightgrey;
   margin: 10px;
 }

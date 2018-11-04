@@ -23,5 +23,6 @@ RUN npm install axios -S
 COPY Docker/nginx.conf /etc/nginx/nginx.conf
 COPY Docker/default /etc/nginx/sites-available/default
 COPY src /dockerize-me/src
+COPY Docker/package-prod.json /dockerize-me/package.json
 
 RUN npm run build
