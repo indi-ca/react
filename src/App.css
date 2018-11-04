@@ -2,10 +2,10 @@
   color: darkslategray;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-}
+/* .App-logo { */
+/*   animation: App-logo-spin infinite 20s linear; */
+/*   height: 40vmin; */
+/* } */
 
 .App-header {
   background-color: #282c34;
@@ -22,25 +22,29 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+/* @keyframes App-logo-spin { */
+/*   from { */
+/*     transform: rotate(0deg); */
+/*   } */
+/*   to { */
+/*     transform: rotate(360deg); */
+/*   } */
+/* } */
 
 .Container {
   margin: 0 auto;
-  width: 400px;
+  font-family: 'Roboto Condensed', sans-serif;
+  width: 500px;
+  color: #151515;
+  background: #FFF;
 }
 
 .Fragment {
-  border: 1px;
-  border-style: solid;
-  border-color: lightgrey;
-  margin: 10px;
+  border:1px solid lightgray;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .SpanishFragment {
@@ -48,6 +52,11 @@
   border-style: solid;
   border-color: lightgrey;
   margin: 10px;
+  font-family: 'Roboto Condensed', sans-serif;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .ChineseFragment {
@@ -55,6 +64,10 @@
   border-style: solid;
   border-color: lightgrey;
   margin: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .ThaiFragment {
@@ -62,4 +75,8 @@
   border-style: solid;
   border-color: lightgrey;
   margin: 10px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 10px;
+  padding-right: 10px;
 }

@@ -9,7 +9,9 @@ class SpanishFragment extends React.Component {
       <div className="SpanishFragment">
         <div>{this.props.value.definition}</div>
         <div>{this.props.value.interpretation}</div>
-        <div>Examples</div>
+	    <div>
+	    This is the spacer
+	    </div>
         <div>{this.props.value.en}</div>
         <div>{this.props.value.es}</div>
       </div>
@@ -59,7 +61,6 @@ class Container extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: null,
       spanish: {
         'definition': null,
         'interpretation': null,
