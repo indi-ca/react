@@ -9,8 +9,8 @@ class SpanishFragment extends React.Component {
       <div className="SpanishFragment">
         <div>{this.props.value.definition}</div>
         <div>{this.props.value.interpretation}</div>
-	    <div>
-	    This is the spacer
+        <div>
+          This is the spacer
 	    </div>
         <div>{this.props.value.en}</div>
         <div>{this.props.value.es}</div>
@@ -47,8 +47,8 @@ class Fragment extends React.Component {
   render() {
     return (
       <div className="Fragment">
-         <div>{this.props.value.subject}</div>
-         <div>{this.props.value.body}</div>
+        <div>{this.props.value.subject}</div>
+        <div>{this.props.value.body}</div>
       </div>
     );
   }
@@ -85,18 +85,17 @@ class Container extends React.Component {
     };
 
     axios.get('http://localhost:48538/reinforce61')
-    .then((response) => {
-      console.log(response.data);
-      this.setState({spanish: response.data.spanish});
-      this.setState({chinese: response.data.chinese});
-      this.setState({thai: response.data.thai});
-      this.setState({fragment: response.data.fragment});
-      this.setState({version: response.data.version});
-    })
-    .catch((e) => 
-    {
-      console.error(e);
-    });
+      .then((response) => {
+        console.log(response.data);
+        this.setState({ spanish: response.data.spanish });
+        this.setState({ chinese: response.data.chinese });
+        this.setState({ thai: response.data.thai });
+        this.setState({ fragment: response.data.fragment });
+        this.setState({ version: response.data.version });
+      })
+      .catch((e) => {
+        console.error(e);
+      });
   }
 
   renderSpanishFragment() {
@@ -134,7 +133,7 @@ class Container extends React.Component {
         {this.renderChineseFragment()}
         {this.renderThaiFragment()}
         {this.renderFragment()}
-	<div>Version {this.state.version}</div>
+        <div>Version {this.state.version}</div>
       </div>
     );
   }
