@@ -46,7 +46,7 @@ class Fragment extends React.Component {
   render() {
     return (
       <div className="Fragment">
-        <div>{this.props.value.subject}</div>
+        <div>{this.props.value.subject}</div> 
         <div>{this.props.value.body.split('\n').map((item, key) => {
           return <span key={key}>{item}<br /></span>
         })}</div>

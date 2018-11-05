@@ -40,7 +40,11 @@
 }
 
 .Fragment {
-  border:1px solid lightgray;
+  border: 1px;
+  border-style: solid;
+  border-color: lightgrey;
+  margin: 10px;
+  font-family: 'Roboto Condensed', sans-serif;
   padding-top: 20px;
   padding-bottom: 20px;
   padding-left: 10px;
