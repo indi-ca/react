@@ -80,3 +80,11 @@
   padding-left: 10px;
   padding-right: 10px;
 }
+
+.translations {
+  margin-top: 10px;
+}
+
+.local {
+  color: grey;
+}

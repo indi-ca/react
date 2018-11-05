@@ -9,11 +9,10 @@ class SpanishFragment extends React.Component {
       <div className="SpanishFragment">
         <div>{this.props.value.definition}</div>
         <div>{this.props.value.interpretation}</div>
-        <div>
-          This is the spacer
-	    </div>
-        <div>{this.props.value.en}</div>
-        <div>{this.props.value.es}</div>
+        <div className="translations">
+          <div>{this.props.value.es}</div>
+          <div className="local">{this.props.value.en}</div>
+        </div>
       </div>
     );
   }
