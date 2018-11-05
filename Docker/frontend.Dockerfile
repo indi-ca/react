@@ -10,18 +10,18 @@ RUN apt-get update && \
 
 RUN curl -sL https://deb.nodesource.com/setup_9.x | bash -
 
-RUN apt-get install -y nodejs
-RUN npm install -g create-react-app 
-RUN create-react-app dockerize-me
+#TODO: Join nginx with the layer above
+RUN apt-get -y install nodejs nginx
+
+RUN npm install -g create-react-app && \
+    npm install axios -S && \
+    create-react-app dockerize-me
 
 WORKDIR /dockerize-me
-RUN npm run build
-
-RUN apt-get install -y nginx
-RUN npm install axios -S
 
 COPY Docker/nginx.conf /etc/nginx/nginx.conf
 COPY Docker/default /etc/nginx/sites-available/default
-COPY src /dockerize-me/src
+RUN npm run build
 
+COPY src /dockerize-me/src
 RUN npm run build
