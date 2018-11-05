@@ -48,7 +48,9 @@ class Fragment extends React.Component {
     return (
       <div className="Fragment">
         <div>{this.props.value.subject}</div>
-        <div>{this.props.value.body}</div>
+        <div>{this.props.value.body.split('\n').map((item, key) => {
+          return <span key={key}>{item}<br /></span>
+        })}</div>
       </div>
     );
   }
@@ -62,26 +64,26 @@ class Container extends React.Component {
     super(props);
     this.state = {
       spanish: {
-        'definition': null,
-        'interpretation': null,
-        'en': null,
-        'es': null
+        'definition': "",
+        'interpretation': "",
+        'en': "",
+        'es': ""
       },
       chinese: {
-        'zhWord': null,
-        'zhInterpretation': null
+        'zhWord': "",
+        'zhInterpretation': ""
       },
       thai: {
-        'thaiWord': null,
-        'thaiIntepretation': null,
-        'thaiTh': null,
-        'thaiEn': null
+        'thaiWord': "",
+        'thaiIntepretation': "",
+        'thaiTh': "",
+        'thaiEn': ""
       },
       fragment: {
-        'subject': null,
-        'body': null
+        'subject': "",
+        'body': ""
       },
-      version: null
+      version: ""
     };
 
     axios.get('http://localhost:48538/reinforce61')
