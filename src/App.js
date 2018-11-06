@@ -7,7 +7,7 @@ class SpanishFragment extends React.Component {
   render() {
     return (
       <div className="SpanishFragment">
-        <div>{this.props.value.definition}</div>
+        <div className="subject">{this.props.value.definition}</div>
         <div>{this.props.value.interpretation}</div>
         <div className="translations">
           <div>{this.props.value.es}</div>
@@ -22,7 +22,7 @@ class ChineseFragment extends React.Component {
   render() {
     return (
       <div className="ChineseFragment">
-        <div>{this.props.value.zhWord}</div>
+        <div className="symbol">{this.props.value.zhWord}</div>
         <div>{this.props.value.zhInterpretation}</div>
       </div>
     );
@@ -33,10 +33,8 @@ class ThaiFragment extends React.Component {
   render() {
     return (
       <div className="ThaiFragment">
-        <div>{this.props.value.thaiWord}</div>
+        <div className="symbol">{this.props.value.thaiWord}</div>
         <div>{this.props.value.thaiInterpretation}</div>
-        <div>{this.props.value.thaiTh}</div>
-        <div>{this.props.value.thaiEn}</div>
       </div>
     );
   }
@@ -46,7 +44,7 @@ class Fragment extends React.Component {
   render() {
     return (
       <div className="Fragment">
-        <div>{this.props.value.subject}</div> 
+        <div>{this.props.value.subject}</div>
         <div>{this.props.value.body.split('\n').map((item, key) => {
           return <span key={key}>{item}<br /></span>
         })}</div>
@@ -55,8 +53,6 @@ class Fragment extends React.Component {
   }
 }
 
-
-// Check if value is used
 
 class Container extends React.Component {
   constructor(props) {
@@ -134,7 +130,7 @@ class Container extends React.Component {
         {this.renderChineseFragment()}
         {this.renderThaiFragment()}
         {this.renderFragment()}
-        <div>Version {this.state.version}</div>
+        <div className="version">Version {this.state.version}</div>
       </div>
     );
   }

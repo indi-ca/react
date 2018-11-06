@@ -15,7 +15,6 @@ prod:
 	yes | cp -r tmp/* /Users/indika/dev/reinforcement/client/react
 	rm -rf tmp
 
-
 up:
 	docker-compose --file Docker/docker-compose.yml down; docker-compose --file Docker/docker-compose.yml up
 

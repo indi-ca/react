@@ -17,6 +17,8 @@ RUN npm install -g create-react-app && \
     npm install axios -S && \
     create-react-app dockerize-me
 
+RUN npm install typeface-roboto typeface-titillium-web --save
+
 WORKDIR /dockerize-me
 
 COPY Docker/nginx.conf /etc/nginx/nginx.conf
