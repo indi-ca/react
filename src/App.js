@@ -8,7 +8,9 @@ class SpanishFragment extends React.Component {
     return (
       <div className="SpanishFragment">
         <div className="subject">{this.props.value.definition}</div>
-        <div>{this.props.value.interpretation}</div>
+        <div>{this.props.value.interpretation.split('\n').map((item, key) => {
+          return <span key={key}>{item}<br /></span>
+        })}</div>
         <div className="translations">
           <div>{this.props.value.es}</div>
           <div className="local">{this.props.value.en}</div>
@@ -23,7 +25,9 @@ class ChineseFragment extends React.Component {
     return (
       <div className="ChineseFragment">
         <div className="symbol">{this.props.value.zhWord}</div>
-        <div>{this.props.value.zhInterpretation}</div>
+        <div>{this.props.value.zhInterpretation.split('\n').map((item, key) => {
+          return <span key={key}>{item}<br /></span>
+        })}</div>
       </div>
     );
   }
@@ -34,7 +38,9 @@ class ThaiFragment extends React.Component {
     return (
       <div className="ThaiFragment">
         <div className="symbol">{this.props.value.thaiWord}</div>
-        <div>{this.props.value.thaiInterpretation}</div>
+        <div>{this.props.value.thaiInterpretation.split('\n').map((item, key) => {
+          return <span key={key}>{item}<br /></span>
+        })}</div>
       </div>
     );
   }
@@ -70,7 +76,7 @@ class Container extends React.Component {
       },
       thai: {
         'thaiWord': "",
-        'thaiIntepretation': "",
+        'thaiInterpretation': "",
         'thaiTh': "",
         'thaiEn': ""
       },
