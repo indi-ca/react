@@ -11,10 +11,12 @@ class SpanishFragment extends React.Component {
         <div>{this.props.value.interpretation.split('\n').map((item, key) => {
           return <span key={key}>{item}<br /></span>
         })}</div>
-        <div className="translations">
-          <div>{this.props.value.es}</div>
-          <div className="local">{this.props.value.en}</div>
-        </div>
+        {this.props.value.extrano != "" &&
+          <div className="translations">
+            <div>{this.props.value.extrano}</div>
+            <div className="local">{this.props.value.local}</div>
+          </div>
+        }
       </div>
     );
   }
@@ -37,10 +39,16 @@ class ThaiFragment extends React.Component {
   render() {
     return (
       <div className="ThaiFragment">
-        <div className="symbol">{this.props.value.thaiWord}</div>
-        <div>{this.props.value.thaiInterpretation.split('\n').map((item, key) => {
+        <div className="symbol">{this.props.value.definition}</div>
+        <div>{this.props.value.interpretation.split('\n').map((item, key) => {
           return <span key={key}>{item}<br /></span>
         })}</div>
+        {this.props.value.extrano != "" &&
+          <div className="translations">
+            <div>{this.props.value.extrano}</div>
+            <div className="local">{this.props.value.local}</div>
+          </div>
+        }
       </div>
     );
   }
@@ -67,18 +75,18 @@ class Container extends React.Component {
       spanish: {
         'definition': "",
         'interpretation': "",
-        'en': "",
-        'es': ""
+        'local': "",
+        'extrano': ""
       },
       chinese: {
         'zhWord': "",
         'zhInterpretation': ""
       },
       thai: {
-        'thaiWord': "",
-        'thaiInterpretation': "",
-        'thaiTh': "",
-        'thaiEn': ""
+        'definition': "",
+        'interpretation': "",
+        'local': "",
+        'extrano': ""
       },
       fragment: {
         'subject': "",
