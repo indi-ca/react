@@ -3,24 +3,24 @@ import axios from 'axios'
 import './App.css';
 
 
-class SpanishFragment extends React.Component {
-  render() {
-    return (
-      <div className="SpanishFragment">
-        <div className="subject">{this.props.value.definition}</div>
-        <div>{this.props.value.interpretation.split('\n').map((item, key) => {
-          return <span key={key}>{item}<br /></span>
-        })}</div>
-        {this.props.value.extrano != "" &&
-          <div className="translations">
-            <div>{this.props.value.extrano}</div>
-            <div className="local">{this.props.value.local}</div>
-          </div>
-        }
-      </div>
-    );
-  }
-}
+// class SpanishFragment extends React.Component {
+//   render() {
+//     return (
+//       <div className="SpanishFragment">
+//         <div className="subject">{this.props.value.definition}</div>
+//         <div>{this.props.value.interpretation.split('\n').map((item, key) => {
+//           return <span key={key}>{item}<br /></span>
+//         })}</div>
+//         {this.props.value.extrano != "" &&
+//           <div className="translations">
+//             <div>{this.props.value.extrano}</div>
+//             <div className="local">{this.props.value.local}</div>
+//           </div>
+//         }
+//       </div>
+//     );
+//   }
+// }
 
 class ChineseFragment extends React.Component {
   render() {
@@ -35,10 +35,29 @@ class ChineseFragment extends React.Component {
   }
 }
 
-class ThaiFragment extends React.Component {
+// class ThaiFragment extends React.Component {
+//   render() {
+//     return (
+//       <div className="ThaiFragment">
+//         <div className="symbol">{this.props.value.definition}</div>
+//         <div>{this.props.value.interpretation.split('\n').map((item, key) => {
+//           return <span key={key}>{item}<br /></span>
+//         })}</div>
+//         {this.props.value.extrano != "" &&
+//           <div className="translations">
+//             <div>{this.props.value.extrano}</div>
+//             <div className="local">{this.props.value.local}</div>
+//           </div>
+//         }
+//       </div>
+//     );
+//   }
+// }
+
+class ExampleFragment extends React.Component {
   render() {
     return (
-      <div className="ThaiFragment">
+      <div className="ExampleFragment">
         <div className="symbol">{this.props.value.definition}</div>
         <div>{this.props.value.interpretation.split('\n').map((item, key) => {
           return <span key={key}>{item}<br /></span>
@@ -71,22 +90,26 @@ class Fragment extends React.Component {
 class Container extends React.Component {
   constructor(props) {
     super(props);
+    var empty = {
+      'definition': "",
+      'interpretation': "",
+      'local': "",
+      'extrano': ""     
+    }
     this.state = {
-      spanish: {
-        'definition': "",
-        'interpretation': "",
-        'local': "",
-        'extrano': ""
-      },
+      chain: empty,
+      french: empty,
+      german: empty,
+      khmer: empty,
+      lao: empty,
+      math: empty,
+      singhalese: empty,
+      spanish: empty,
+      thai: empty,
+      vietnamese: empty,
       chinese: {
         'zhWord': "",
         'zhInterpretation': ""
-      },
-      thai: {
-        'definition': "",
-        'interpretation': "",
-        'local': "",
-        'extrano': ""
       },
       fragment: {
         'subject': "",
@@ -98,22 +121,23 @@ class Container extends React.Component {
     axios.get('http://localhost:48538/reinforce61')
       .then((response) => {
         console.log(response.data);
+        this.setState({ chain: response.data.chain });
+        this.setState({ french: response.data.french });
+        this.setState({ german: response.data.german });
+        this.setState({ khmer: response.data.khmer });
+        this.setState({ lao: response.data.lao });
+        this.setState({ math: response.data.math });
+        this.setState({ singhalese: response.data.singhalese });
         this.setState({ spanish: response.data.spanish });
-        this.setState({ chinese: response.data.chinese });
         this.setState({ thai: response.data.thai });
+        this.setState({ vietnamese: response.data.vietnamese });
+        this.setState({ chinese: response.data.chinese });
         this.setState({ fragment: response.data.fragment });
         this.setState({ version: response.data.version });
       })
       .catch((e) => {
         console.error(e);
       });
-  }
-
-  renderSpanishFragment() {
-    return (
-      <SpanishFragment
-        value={this.state.spanish}
-      />);
   }
 
   renderChineseFragment() {
@@ -123,10 +147,10 @@ class Container extends React.Component {
       />);
   }
 
-  renderThaiFragment() {
+  renderExampleFragment(child){
     return (
-      <ThaiFragment
-        value={this.state.thai}
+      <ExampleFragment
+        value={this.state[child]}
       />);
   }
 
@@ -140,10 +164,18 @@ class Container extends React.Component {
   render() {
     return (
       <div className="Container">
-        {this.renderSpanishFragment()}
+        {this.renderExampleFragment('spanish')}
+        {this.renderExampleFragment('thai')}
         {this.renderChineseFragment()}
-        {this.renderThaiFragment()}
+        {this.renderExampleFragment('math')}
         {this.renderFragment()}
+        {this.renderExampleFragment('vietnamese')}
+        {this.renderExampleFragment('chain')}
+        {this.renderExampleFragment('french')}
+        {this.renderExampleFragment('german')}
+        {this.renderExampleFragment('khmer')}
+        {this.renderExampleFragment('lao')}
+        {this.renderExampleFragment('singhalese')}
         <div className="version">Version {this.state.version}</div>
       </div>
     );
