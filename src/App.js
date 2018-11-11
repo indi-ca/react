@@ -3,25 +3,6 @@ import axios from 'axios'
 import './App.css';
 
 
-// class SpanishFragment extends React.Component {
-//   render() {
-//     return (
-//       <div className="SpanishFragment">
-//         <div className="subject">{this.props.value.definition}</div>
-//         <div>{this.props.value.interpretation.split('\n').map((item, key) => {
-//           return <span key={key}>{item}<br /></span>
-//         })}</div>
-//         {this.props.value.extrano != "" &&
-//           <div className="translations">
-//             <div>{this.props.value.extrano}</div>
-//             <div className="local">{this.props.value.local}</div>
-//           </div>
-//         }
-//       </div>
-//     );
-//   }
-// }
-
 class ChineseFragment extends React.Component {
   render() {
     return (
@@ -34,25 +15,6 @@ class ChineseFragment extends React.Component {
     );
   }
 }
-
-// class ThaiFragment extends React.Component {
-//   render() {
-//     return (
-//       <div className="ThaiFragment">
-//         <div className="symbol">{this.props.value.definition}</div>
-//         <div>{this.props.value.interpretation.split('\n').map((item, key) => {
-//           return <span key={key}>{item}<br /></span>
-//         })}</div>
-//         {this.props.value.extrano != "" &&
-//           <div className="translations">
-//             <div>{this.props.value.extrano}</div>
-//             <div className="local">{this.props.value.local}</div>
-//           </div>
-//         }
-//       </div>
-//     );
-//   }
-// }
 
 class ExampleFragment extends React.Component {
   render() {
@@ -73,10 +35,10 @@ class ExampleFragment extends React.Component {
   }
 }
 
-class Fragment extends React.Component {
+class FreeFragment extends React.Component {
   render() {
     return (
-      <div className="Fragment">
+      <div className="FreeFragment">
         <div>{this.props.value.subject}</div>
         <div>{this.props.value.body.split('\n').map((item, key) => {
           return <span key={key}>{item}<br /></span>
@@ -103,6 +65,7 @@ class Container extends React.Component {
       khmer: empty,
       lao: empty,
       math: empty,
+      phrase: empty,
       singhalese: empty,
       spanish: empty,
       thai: empty,
@@ -127,6 +90,7 @@ class Container extends React.Component {
         this.setState({ khmer: response.data.khmer });
         this.setState({ lao: response.data.lao });
         this.setState({ math: response.data.math });
+        this.setState({ phrase: response.data.phrase });
         this.setState({ singhalese: response.data.singhalese });
         this.setState({ spanish: response.data.spanish });
         this.setState({ thai: response.data.thai });
@@ -154,9 +118,9 @@ class Container extends React.Component {
       />);
   }
 
-  renderFragment() {
+  renderFreeFragment() {
     return (
-      <Fragment
+      <FreeFragment
         value={this.state.fragment}
       />);
   }
@@ -165,10 +129,11 @@ class Container extends React.Component {
     return (
       <div className="Container">
         {this.renderExampleFragment('spanish')}
+        {this.renderExampleFragment('phrase')}
         {this.renderExampleFragment('thai')}
         {this.renderChineseFragment()}
         {this.renderExampleFragment('math')}
-        {this.renderFragment()}
+        {this.renderFreeFragment()}
         {this.renderExampleFragment('vietnamese')}
         {this.renderExampleFragment('chain')}
         {this.renderExampleFragment('french')}
